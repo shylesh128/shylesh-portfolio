@@ -15,8 +15,8 @@ export default function Home() {
         <h1 className={styles.title}>Hey, I am Shylesh S</h1>
 
         <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.js</code>
+          Stack Web Developer in MERN Stack, Also exploring my career in the
+          Block Chain Development, Data Analytics field.
         </p>
 
         <div className={styles.grid}>
