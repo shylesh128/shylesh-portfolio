@@ -4,7 +4,9 @@ const colors = {
   primary: "#5f0cc8",
   primaryLight: "#8a37f3",
   primaryLightest: "#b987f8",
-  light: "#f9f5ff",
+  light: "efe7fa",
+
+  secondary: "#af86e4",
 };
 
 export default colors;

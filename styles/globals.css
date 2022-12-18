@@ -1,9 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+  /* background: rgb(104, 99, 203);
+  background: linear-gradient(
+    337deg,
+    rgba(104, 99, 203, 1) 13%,
+    rgba(142, 123, 175, 1) 96%,
+    rgba(94, 41, 162, 1) 100%
+  ); */
 }
 
 a {
@@ -15,12 +23,120 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  height: 60px;
+  width: 100px;
+  margin: 0;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.loader2 {
+  position: absolute;
+  top: 45%;
+  left: 47%;
+  height: 70px;
+  width: 120px;
+  margin: 0;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  transform: scaleX(-1);
+}
+
+.pacman {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 60px;
+  width: 60px;
+}
+.pacman .eye {
+  position: absolute;
+  top: 10px;
+  left: 30px;
+  height: 7px;
+  width: 7px;
+  border-radius: 7px;
+  background-color: #efe7fa;
+}
+.pacman span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 60px;
+}
+.pacman span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 30px;
+  width: 60px;
+  background-color: #390778;
+}
+.pacman .top::before {
+  top: 0;
+  border-radius: 60px 60px 0px 0px;
+}
+.pacman .bottom::before {
+  bottom: 0;
+  border-radius: 0px 0px 60px 60px;
+}
+.pacman .left::before {
+  bottom: 0;
+  height: 60px;
+  width: 30px;
+  border-radius: 60px 0px 0px 60px;
+}
+.pacman .top {
+  -webkit-animation: animtop 0.5s infinite;
+  animation: animtop 5s infinite;
+}
+
+.pacman .bottom {
+  -webkit-animation: animbottom 0s infinite;
+  animation: animbottom 1s infinite;
+}
+
+.loader2 .pacman .bottom {
+  -webkit-animation: animbottom 0s infinite;
+  animation: animbottom 2s infinite;
+}
+
+@-webkit-keyframes animbottom {
+  0%,
+  100% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
   }
-  body {
-    color: white;
-    background: black;
+  50% {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
   }
 }
+
+@keyframes animbottom {
+  0%,
+  100% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+}
+
+/* .colors {
+  dark: #130228;
+  primaryDark: #390778;
+  primary: #5f0cc8;
+  primaryLight: #8a37f3;
+  primaryLightest: #b987f8;
+  light: #efe7fa;
+
+  secondary: #af86e4;
+} */
