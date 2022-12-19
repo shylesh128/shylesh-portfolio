@@ -1,12 +1,28 @@
-import { Typography } from "@mui/material";
-import { Container } from "@mui/system";
 import Head from "next/head";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { Button, Typography } from "@mui/material";
+import { Container } from "@mui/system";
 import Loader from "../components/loader/Loader";
 import { BusinessContext } from "../services/businessContext";
 
+import io from "socket.io-client";
+import Chat from "../components/Chat";
+
+const socket = io.connect("http://localhost:3001");
+
 export default function Home() {
   const { loading } = useContext(BusinessContext);
+
+  const [userName, setUserName] = useState("");
+  const [room, setRoom] = useState("");
+  const [showChat, setShowChat] = useState(false);
+
+  const joinRoom = () => {
+    if (userName !== "" && room !== "") {
+      socket.emit("join_room", room);
+      setShowChat(true);
+    }
+  };
   if (loading) {
     return <Loader />;
   }
@@ -20,16 +36,33 @@ export default function Home() {
       <Container
         style={{
           marginTop: 100,
+          marginLeft: 100,
+          // display: "flex",
+          // flexDirection: "column",
         }}
       >
-        <Typography
-          style={{
-            fontFamily: "Pacifico",
-          }}
-          variant="h2"
-        >
-          You Talkie
-        </Typography>
+        {!showChat ? (
+          <div className="joinChatContainer">
+            <h3>Join A Chat</h3>
+            <input
+              type="text"
+              placeholder="join..."
+              onChange={(e) => {
+                setUserName(e.target.value);
+              }}
+            />
+            <input
+              type="text"
+              placeholder="Room ID..."
+              onChange={(e) => {
+                setRoom(e.target.value);
+              }}
+            />
+            <Button onClick={joinRoom}>Join A Room</Button>
+          </div>
+        ) : (
+          <Chat socket={socket} userName={userName} room={room} />
+        )}
       </Container>
     </div>
   );
