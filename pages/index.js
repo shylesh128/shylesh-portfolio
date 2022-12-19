@@ -8,7 +8,7 @@ import { BusinessContext } from "../services/businessContext";
 import io from "socket.io-client";
 import Chat from "../components/Chat";
 
-const socket = io.connect("http://localhost:3001");
+const socket = io.connect("https://chat-server-wine.vercel.app");
 
 export default function Home() {
   const { loading } = useContext(BusinessContext);
